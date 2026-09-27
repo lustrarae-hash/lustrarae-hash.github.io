@@ -1,0 +1,44 @@
+[
+  {
+    "id": "SYS-01",
+    "tag": "CORE INTERFACE",
+    "title": "Neural Link Matrix",
+    "description": "High-bandwidth bio-digital gateway enabling instantaneous synaptic communication and cognitive telemetry rendering.",
+    "url": "https://example.com/neural-link"
+  },
+  {
+    "id": "SYS-02",
+    "tag": "SECURITY LAYER",
+    "title": "Quantum Icebreaker",
+    "description": "Next-generation cryptographic firewall penetration system built on dynamic lattice decryption algorithms.",
+    "url": "https://example.com/icebreaker"
+  },
+  {
+    "id": "SYS-03",
+    "tag": "SYNTHETICS",
+    "title": "Sub-Grid Overdrive",
+    "description": "Autonomous energy redistribution grid routing auxiliary flux directly to auxiliary defense manifolds.",
+    "url": "https://example.com/overdrive"
+  },
+  {
+    "id": "SYS-04",
+    "tag": "AI RECON",
+    "title": "Specter Surveillance",
+    "description": "Distributed node sensor array harvesting encrypted telemetry packets across low-orbit relays.",
+    "url": "https://example.com/specter"
+  },
+  {
+    "id": "SYS-05",
+    "tag": "HARDWARE",
+    "title": "Hyper-Flux Engine",
+    "description": "Miniaturized fusion core designed to stabilize sub-atomic particle acceleration in localized zero-gravity chambers.",
+    "url": "https://example.com/hyper-flux"
+  },
+  {
+    "id": "SYS-06",
+    "tag": "PROTOCOL",
+    "title": "Zero-Echo VPN",
+    "description": "Decentralized mesh tunnel masking packet origin by routing traffic across synthetic ghost servers.",
+    "url": "https://example.com/zero-echo"
+  }
+]
