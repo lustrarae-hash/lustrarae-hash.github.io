@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CYBER.EROS // AUDIO TELEMETRY</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080408;
+      --card-bg: rgba(18, 10, 18, 0.94);
+      --neon-pink: #ff007f;
+      --crimson-lust: #ff003c;
+      --blush-glow: #ff4d8d;
+      --cyber-cyan: #00f0ff;
+      --gold-tier: #fcee0a;
+      --text-main: #f8fafc;
+      --text-muted: #b89ca9;
+      --font-display: 'Orbitron', monospace, sans-serif;
+      --font-body: 'Rajdhani', sans-serif;
+      --font-mono: 'Share Tech Mono', monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      min-height: 100vh;
+      padding: 3rem 1.5rem;
+    }
+
+    .detail-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--neon-pink);
+      box-shadow: 0 0 40px rgba(255, 0, 85, 0.3);
+      padding: 3rem 2.5rem;
+      backdrop-filter: blur(20px);
+      clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--blush-glow);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      letter-spacing: 2px;
+      transition: all 0.2s ease;
+    }
+
+    .back-btn:hover {
+      color: #fff;
+      transform: translateX(-5px);
+    }
+
+    /* Layout Columns */
+    .hud-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 2.5rem;
+    }
+
+    @media (max-width: 860px) {
+      .hud-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Cover & Audio Player */
+    .media-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .cover-frame {
+      width: 100%;
+      height: 340px;
+      background: #180d1a;
+      border: 1px solid rgba(255, 0, 85, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cover-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Audio Player Styling */
+    .audio-player-box {
+      background: rgba(255, 0, 85, 0.06);
+      border: 1px solid rgba(255, 0, 85, 0.3);
+      padding: 1.2rem;
+    }
+
+    .audio-label {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--cyber-cyan);
+      margin-bottom: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    audio {
+      width: 100%;
+      outline: none;
+      filter: invert(0.9) hue-rotate(290deg);
+    }
+
+    /* Info Column */
+    .info-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .uuid-tag {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--cyber-cyan);
+      margin-bottom: 0.5rem;
+      word-break: break-all;
+    }
+
+    .title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      color: #fff;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+    }
+
+    .tag-line {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      color: var(--blush-glow);
+      letter-spacing: 1.5px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Metadata Grid */
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .meta-box {
+      background: rgba(255, 0, 85, 0.05);
+      border-left: 3px solid var(--crimson-lust);
+      padding: 0.8rem 1rem;
+    }
+
+    .meta-label {
+      font-family: var(--font-display);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    .meta-val {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .description {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: #cbd5e1;
+      margin-bottom: 1.8rem;
+    }
+
+    /* Triggers */
+    .triggers-section {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      letter-spacing: 1.5px;
+      color: var(--blush-glow);
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+
+    .triggers-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .trigger-badge {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      padding: 5px 12px;
+      background: rgba(255, 0, 85, 0.1);
+      border: 1px solid var(--neon-pink);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="detail-container" id="hudContainer">
+    <div style="text-align: center; color: var(--blush-glow); font-family: var(--font-display);">
+      INITIALIZING AUDIO HUD...
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const targetId = urlParams.get('id');
+      const container = document.getElementById('hudContainer');
+
+      if (!targetId) {
+        container.innerHTML = `
+          <a href="index.html" class="back-btn">&larr; RETURN TO ARCHIVE</a>
+          <h2 style="color:var(--crimson-lust);">NO FILE UUID SPECIFIED</h2>
+        `;
+        return;
+      }
+
+      try {
+        const res = await fetch('data.json');
+        const items = await res.json();
+        const item = items.find(i => i.uuid === targetId || i.id === targetId);
+
+        if (!item) {
+          container.innerHTML = `
+            <a href="index.html" class="back-btn">&larr; RETURN TO ARCHIVE</a>
+            <h2 style="color:var(--crimson-lust);">FILE RECORD [${targetId}] NOT FOUND</h2>
+          `;
+          return;
+        }
+
+        const tags = Array.isArray(item.tags) ? item.tags : (item.tags ? item.tags.split(',') : []);
+        const triggers = Array.isArray(item.triggers) ? item.triggers : (item.triggers ? item.triggers.split(',') : []);
+        const tones = Array.isArray(item.tone) ? item.tone.join(', ') : (item.tone || 'NONE');
+        const coverImg = item.cover || 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80';
+
+        container.innerHTML = `
+          <a href="index.html" class="back-btn">&larr; TERMINATE LINK // RETURN TO ARCHIVE</a>
+          
+          <div class="hud-grid">
+            <!-- Media & Player Column -->
+            <div class="media-col">
+              <div class="cover-frame">
+                <img src="${coverImg}" alt="${item.title}" class="cover-img" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80'">
+              </div>
+
+              <div class="audio-player-box">
+                <div class="audio-label">
+                  <span>AUDIO FEED</span>
+                  <span>${item.file ? item.file.split('.').pop().toUpperCase() : 'MP3'}</span>
+                </div>
+                <audio controls src="${item.file || ''}"></audio>
+              </div>
+            </div>
+
+            <!-- Details & Telemetry Column -->
+            <div class="info-col">
+              <div class="uuid-tag">UUID: ${item.uuid}</div>
+              <h1 class="title">${item.title}</h1>
+              <div class="tag-line">${item.id} // ${item.tag}</div>
+
+              <div class="meta-grid">
+                <div class="meta-box">
+                  <div class="meta-label">ACCESS TIER</div>
+                  <div class="meta-val" style="color:var(--gold-tier);">${item.tier}</div>
+                </div>
+                <div class="meta-box">
+                  <div class="meta-label">AUDIENCE</div>
+                  <div class="meta-val">${item.audience}</div>
+                </div>
+                <div class="meta-box">
+                  <div class="meta-label">VOICE ARTIST</div>
+                  <div class="meta-val">${item.artist}</div>
+                </div>
+                <div class="meta-box">
+                  <div class="meta-label">AUTHOR / PRODUCER</div>
+                  <div class="meta-val">${item.author}</div>
+                </div>
+                <div class="meta-box">
+                  <div class="meta-label">TONE / DISPOSITION</div>
+                  <div class="meta-val" style="color:var(--neon-pink);">${tones}</div>
+                </div>
+                <div class="meta-box">
+                  <div class="meta-label">RELEASE DATE</div>
+                  <div class="meta-val">${item.releaseDate}</div>
+                </div>
+              </div>
+
+              <p class="description">${item.description}</p>
+
+              <div class="triggers-section">
+                <div class="section-title">ACTIVE TAGS:</div>
+                <div class="triggers-wrap">
+                  ${tags.map(tag => `<span class="trigger-badge">${tag.trim()}</span>`).join('')}
+                </div>
+              </div>
+
+              <div class="triggers-section">
+                <div class="section-title">ACTIVE ACOUSTIC TRIGGERS:</div>
+                <div class="triggers-wrap">
+                  ${triggers.map(trigg => `<span class="trigger-badge">${trigg.trim()}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      } catch (err) {
+        console.error(err);
+        container.innerHTML = `<h2 style="color:var(--crimson-lust);">CORRUPT DATA STREAM</h2>`;
+      }
+    });
+  </script>
+</body>
+</html>

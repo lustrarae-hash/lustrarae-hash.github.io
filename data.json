@@ -1,44 +1,51 @@
 [
   {
-    "id": "SYS-01",
-    "tag": "CORE INTERFACE",
-    "title": "Neural Link Matrix",
-    "description": "High-bandwidth bio-digital gateway enabling instantaneous synaptic communication and cognitive telemetry rendering.",
-    "url": "https://example.com/neural-link"
+    "uuid": "c4a8d09f-43b2-4ce6-a192-f01e74b59001",
+    "id": "EROS-01",
+    "tag": "HYPNOSIS & TRANCE",
+    "title": "Synaptic Overdrive Induction",
+    "description": "A deep trance session using layered binaural frequencies, gentle mic brushing, and slow vocal pacing to guide you into total mental submission.",
+    "tags": ["PEELS", "KCILC", "GNIHTAERB", "REPSIHW"],
+    "triggers": ["SLEEP", "CLICK", "BREATHING", "WHISPER"],
+    "tier": "FREE",
+    "audience": "F4M",
+    "author": "CipherEros",
+    "artist": "Vesper V",
+    "releaseDate": "2026-03-15",
+    "tone": ["DOMINANT", "BRATTY"],
+    "cover": "covers/c4a8d09f-43b2-4ce6-a192-f01e74b59001.png",
+    "file": "audio/c4a8d09f-43b2-4ce6-a192-f01e74b59001.mp3"
   },
   {
-    "id": "SYS-02",
-    "tag": "SECURITY LAYER",
-    "title": "Quantum Icebreaker",
-    "description": "Next-generation cryptographic firewall penetration system built on dynamic lattice decryption algorithms.",
-    "url": "https://example.com/icebreaker"
+    "uuid": "e7b1c34a-9952-47ef-b690-349f48ac1202",
+    "id": "EROS-02",
+    "tag": "TACTILE WHISPERS",
+    "title": "Midnight Pheromone Pulse",
+    "description": "Intense close-up binaural recording featuring gentle ear-to-ear whispers, skin friction, and rhythmic breathing to simulate complete physical proximity.",
+    "triggers": ["DROP", "SKIN-TOUCH", "PULSE", "EAR-MASSAGE"],
+    "tier": "PAID LEVEL 1",
+    "audience": "M4F",
+    "author": "AuraProtocol",
+    "artist": "Kaelen Grey",
+    "releaseDate": "2026-02-28",
+    "tone": ["SUBMISSIVE", "AFFECTIONATE"],
+    "cover": "covers/e7b1c34a-9952-47ef-b690-349f48ac1202.png",
+    "file": "audio/e7b1c34a-9952-47ef-b690-349f48ac1202.wav"
   },
   {
-    "id": "SYS-03",
-    "tag": "SYNTHETICS",
-    "title": "Sub-Grid Overdrive",
-    "description": "Autonomous energy redistribution grid routing auxiliary flux directly to auxiliary defense manifolds.",
-    "url": "https://example.com/overdrive"
-  },
-  {
-    "id": "SYS-04",
-    "tag": "AI RECON",
-    "title": "Specter Surveillance",
-    "description": "Distributed node sensor array harvesting encrypted telemetry packets across low-orbit relays.",
-    "url": "https://example.com/specter"
-  },
-  {
-    "id": "SYS-05",
-    "tag": "HARDWARE",
-    "title": "Hyper-Flux Engine",
-    "description": "Miniaturized fusion core designed to stabilize sub-atomic particle acceleration in localized zero-gravity chambers.",
-    "url": "https://example.com/hyper-flux"
-  },
-  {
-    "id": "SYS-06",
-    "tag": "PROTOCOL",
-    "title": "Zero-Echo VPN",
-    "description": "Decentralized mesh tunnel masking packet origin by routing traffic across synthetic ghost servers.",
-    "url": "https://example.com/zero-echo"
+    "uuid": "3f8e56b1-12a8-4235-9cb1-80ecfa573003",
+    "id": "EROS-03",
+    "tag": "PSYCHO-ACOUSTICS",
+    "title": "Velvet Room Solitude",
+    "description": "Extended sensory isolation audio with soft affirmations, gentle repetitive tapping, and sub-dermal resonance waves designed to melt stress.",
+    "triggers": ["SLEEP", "RAIN", "SOFT TAPPING", "HUMMING"],
+    "tier": "PAID LEVEL 2",
+    "audience": "FF4M",
+    "author": "NeuroTwin Lab",
+    "artist": "Lyra & Nyx",
+    "releaseDate": "2026-01-10",
+    "tone": ["CARING", "PLAYFUL"],
+    "cover": "covers/3f8e56b1-12a8-4235-9cb1-80ecfa573003.png",
+    "file": "audio/3f8e56b1-12a8-4235-9cb1-80ecfa573003.mp3"
   }
 ]
