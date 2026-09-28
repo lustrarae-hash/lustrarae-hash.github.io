@@ -11,8 +11,8 @@
 
   <style>
     :root {
-      --bg: #080408;
-      --card-bg: rgba(18, 10, 18, 0.94);
+      --bg: #070408;
+      --card-bg: rgba(18, 10, 19, 0.94);
       --neon-pink: #ff007f;
       --crimson-lust: #ff003c;
       --blush-glow: #ff4d8d;
@@ -36,11 +36,11 @@
     }
 
     .detail-container {
-      max-width: 1080px;
+      max-width: 1100px;
       margin: 0 auto;
       background: var(--card-bg);
       border: 1px solid var(--neon-pink);
-      box-shadow: 0 0 40px rgba(255, 0, 85, 0.3);
+      box-shadow: 0 0 45px rgba(255, 0, 85, 0.3);
       padding: 3rem 2.5rem;
       backdrop-filter: blur(20px);
       clip-path: polygon(0 0, calc(100% - 30px) 0, 100% 30px, 100% 100%, 30px 100%, 0 calc(100% - 30px));
@@ -64,18 +64,17 @@
       transform: translateX(-5px);
     }
 
-    /* Layout Columns */
     .hud-grid {
       display: grid;
-      grid-template-columns: 340px 1fr;
+      grid-template-columns: 360px 1fr;
       gap: 2.5rem;
     }
 
-    @media (max-width: 860px) {
+    @media (max-width: 890px) {
       .hud-grid { grid-template-columns: 1fr; }
     }
 
-    /* Cover & Audio Player */
+    /* Left Column: Media & Cyber Audio Console */
     .media-col {
       display: flex;
       flex-direction: column;
@@ -84,8 +83,8 @@
 
     .cover-frame {
       width: 100%;
-      height: 340px;
-      background: #180d1a;
+      height: 360px;
+      background: #140816;
       border: 1px solid rgba(255, 0, 85, 0.4);
       position: relative;
       overflow: hidden;
@@ -97,59 +96,118 @@
       object-fit: cover;
     }
 
-    /* Audio Player Styling */
-    .audio-player-box {
+    /* Cyber Custom Audio Console */
+    .audio-console {
       background: rgba(255, 0, 85, 0.06);
-      border: 1px solid rgba(255, 0, 85, 0.3);
-      padding: 1.2rem;
+      border: 1px solid rgba(255, 0, 85, 0.35);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
     }
 
-    .audio-label {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      color: var(--cyber-cyan);
-      margin-bottom: 0.75rem;
+    .equalizer-canvas {
+      width: 100%;
+      height: 48px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 0, 85, 0.2);
+    }
+
+    .scrubber-wrap {
       display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--cyber-cyan);
+    }
+
+    .cyber-range {
+      flex-grow: 1;
+      accent-color: var(--neon-pink);
+      cursor: pointer;
+    }
+
+    .audio-controls {
+      display: flex;
+      align-items: center;
       justify-content: space-between;
     }
 
-    audio {
-      width: 100%;
-      outline: none;
-      filter: invert(0.9) hue-rotate(290deg);
+    .play-btn {
+      background: linear-gradient(90deg, var(--crimson-lust), var(--neon-pink));
+      border: none;
+      color: #fff;
+      font-family: var(--font-display);
+      font-size: 0.8rem;
+      padding: 8px 18px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      clip-path: polygon(8px 0, 100% 0, calc(100% - 8px) 100%, 0 100%);
+      transition: all 0.2s ease;
     }
 
-    /* Info Column */
+    .play-btn:hover {
+      box-shadow: 0 0 15px var(--neon-pink);
+    }
+
+    .speed-btn {
+      background: transparent;
+      border: 1px solid rgba(255, 0, 85, 0.4);
+      color: var(--blush-glow);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      cursor: pointer;
+    }
+
+    /* Right Column: Information */
     .info-col {
       display: flex;
       flex-direction: column;
+    }
+
+    .uuid-tag-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
     }
 
     .uuid-tag {
       font-family: var(--font-mono);
       font-size: 0.8rem;
       color: var(--cyber-cyan);
-      margin-bottom: 0.5rem;
       word-break: break-all;
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--cyber-cyan);
+      color: var(--cyber-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      padding: 2px 6px;
+      cursor: pointer;
     }
 
     .title {
       font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-size: clamp(2rem, 4vw, 2.7rem);
       color: #fff;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
       text-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
     }
 
-    .tag-line {
+    .primary-tag {
       font-family: var(--font-display);
       font-size: 0.85rem;
       color: var(--blush-glow);
-      letter-spacing: 1.5px;
+      letter-spacing: 2px;
       margin-bottom: 1.5rem;
     }
 
-    /* Metadata Grid */
+    /* Metadata HUD Grid */
     .meta-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -178,36 +236,44 @@
     }
 
     .description {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       line-height: 1.7;
       color: #cbd5e1;
       margin-bottom: 1.8rem;
     }
 
-    /* Triggers */
-    .triggers-section {
-      margin-bottom: 2rem;
+    /* Section badges */
+    .section-wrap {
+      margin-bottom: 1.4rem;
     }
 
-    .section-title {
+    .section-heading {
       font-family: var(--font-display);
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       letter-spacing: 1.5px;
       color: var(--blush-glow);
-      margin-bottom: 0.75rem;
-      text-transform: uppercase;
+      margin-bottom: 0.6rem;
     }
 
-    .triggers-wrap {
+    .badge-collection {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
+      gap: 6px;
     }
 
-    .trigger-badge {
+    .hud-badge-tag {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
-      padding: 5px 12px;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      background: rgba(0, 240, 255, 0.1);
+      border: 1px solid var(--cyber-cyan);
+      color: #fff;
+    }
+
+    .hud-badge-trigger {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 4px 10px;
       background: rgba(255, 0, 85, 0.1);
       border: 1px solid var(--neon-pink);
       color: #fff;
@@ -223,6 +289,9 @@
   </div>
 
   <script>
+    let audioInstance = null;
+    let visualizerInterval = null;
+
     document.addEventListener('DOMContentLoaded', async () => {
       const urlParams = new URLSearchParams(window.location.search);
       const targetId = urlParams.get('id');
@@ -244,40 +313,54 @@
         if (!item) {
           container.innerHTML = `
             <a href="index.html" class="back-btn">&larr; RETURN TO ARCHIVE</a>
-            <h2 style="color:var(--crimson-lust);">FILE RECORD [${targetId}] NOT FOUND</h2>
+            <h2 style="color:var(--crimson-lust);">RECORD [${targetId}] NOT FOUND</h2>
           `;
           return;
         }
 
-        const tags = Array.isArray(item.tags) ? item.tags : (item.tags ? item.tags.split(',') : []);
-        const triggers = Array.isArray(item.triggers) ? item.triggers : (item.triggers ? item.triggers.split(',') : []);
+        const tags = Array.isArray(item.tags) ? item.tags : [];
+        const triggers = Array.isArray(item.triggers) ? item.triggers : [];
         const tones = Array.isArray(item.tone) ? item.tone.join(', ') : (item.tone || 'NONE');
-        const coverImg = item.cover || 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80';
+        const coverImg = item.cover || "${item.cover || ''}";
 
         container.innerHTML = `
           <a href="index.html" class="back-btn">&larr; TERMINATE LINK // RETURN TO ARCHIVE</a>
           
           <div class="hud-grid">
-            <!-- Media & Player Column -->
+            <!-- Media & Cyber Player -->
             <div class="media-col">
               <div class="cover-frame">
-                <img src="${coverImg}" alt="${item.title}" class="cover-img" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=80'">
+                <img src="${coverImg}" alt="${item.title}" class="cover-img" onerror="this.src='${item.cover || ''}'">
               </div>
 
-              <div class="audio-player-box">
-                <div class="audio-label">
-                  <span>AUDIO FEED</span>
-                  <span>${item.file ? item.file.split('.').pop().toUpperCase() : 'MP3'}</span>
+              <!-- Functional Cyber Audio Player -->
+              <div class="audio-console">
+                <canvas id="equalizer" class="equalizer-canvas"></canvas>
+                
+                <div class="scrubber-wrap">
+                  <span id="currentTime">00:00</span>
+                  <input type="range" id="seekSlider" class="cyber-range" value="0" min="0" max="100">
+                  <span id="durationTime">--:--</span>
                 </div>
-                <audio controls src="${item.file || ''}"></audio>
+
+                <div class="audio-controls">
+                  <button id="playBtn" class="play-btn">PLAY FEED</button>
+                  <button id="speedBtn" class="speed-btn">1.0x</button>
+                </div>
+
+                <audio id="audioSource" src="${item.file || ''}" preload="metadata"></audio>
               </div>
             </div>
 
-            <!-- Details & Telemetry Column -->
+            <!-- Details Dossier -->
             <div class="info-col">
-              <div class="uuid-tag">UUID: ${item.uuid}</div>
+              <div class="uuid-tag-row">
+                <span class="uuid-tag">TARGET_UUID: ${item.uuid}</span>
+                <!--<button class="copy-btn" onclick="navigator.clipboard.writeText('${item.uuid}'); alert('UUID Copied to Buffer');">COPY</button>-->
+              </div>
+              
               <h1 class="title">${item.title}</h1>
-              <div class="tag-line">${item.id} // ${item.tag}</div>
+              <div class="primary-tag">${item.id} // ${item.tag}</div>
 
               <div class="meta-grid">
                 <div class="meta-box">
@@ -297,7 +380,7 @@
                   <div class="meta-val">${item.author}</div>
                 </div>
                 <div class="meta-box">
-                  <div class="meta-label">TONE / DISPOSITION</div>
+                  <div class="meta-label">TONAL PROFILE</div>
                   <div class="meta-val" style="color:var(--neon-pink);">${tones}</div>
                 </div>
                 <div class="meta-box">
@@ -308,27 +391,109 @@
 
               <p class="description">${item.description}</p>
 
-              <div class="triggers-section">
-                <div class="section-title">ACTIVE TAGS:</div>
-                <div class="triggers-wrap">
-                  ${tags.map(tag => `<span class="trigger-badge">${tag.trim()}</span>`).join('')}
-                </div>
-              </div>
+              ${tags.length ? `
+                <div class="section-wrap">
+                  <div class="section-heading">// THEMATIC TAGS:</div>
+                  <div class="badge-collection">
+                    ${tags.map(t => `<span class="hud-badge-tag">${t}</span>`).join('')}
+                  </div>
+                </div>` : ''}
 
-              <div class="triggers-section">
-                <div class="section-title">ACTIVE ACOUSTIC TRIGGERS:</div>
-                <div class="triggers-wrap">
-                  ${triggers.map(trigg => `<span class="trigger-badge">${trigg.trim()}</span>`).join('')}
-                </div>
-              </div>
+              ${triggers.length ? `
+                <div class="section-wrap">
+                  <div class="section-heading">// ACOUSTIC TRIGGERS:</div>
+                  <div class="badge-collection">
+                    ${triggers.map(tr => `<span class="hud-badge-trigger">${tr}</span>`).join('')}
+                  </div>
+                </div>` : ''}
             </div>
           </div>
         `;
+
+        // Initialize Audio HUD controls
+        initCyberAudio();
       } catch (err) {
         console.error(err);
-        container.innerHTML = `<h2 style="color:var(--crimson-lust);">CORRUPT DATA STREAM</h2>`;
+        container.innerHTML = `<h2 style="color:var(--crimson-lust);">TELEMETRY CORRUPTED</h2>`;
       }
     });
+
+    function initCyberAudio() {
+      const audio = document.getElementById('audioSource');
+      const playBtn = document.getElementById('playBtn');
+      const seekSlider = document.getElementById('seekSlider');
+      const currentTime = document.getElementById('currentTime');
+      const durationTime = document.getElementById('durationTime');
+      const speedBtn = document.getElementById('speedBtn');
+      const canvas = document.getElementById('equalizer');
+      const ctx = canvas.getContext('2d');
+
+      const speeds = [1.0, 1.2, 1.5];
+      let speedIdx = 0;
+
+      speedBtn.addEventListener('click', () => {
+        speedIdx = (speedIdx + 1) % speeds.length;
+        audio.playbackRate = speeds[speedIdx];
+        speedBtn.textContent = `${speeds[speedIdx]}x`;
+      });
+
+      playBtn.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play().then(() => {
+            playBtn.textContent = 'PAUSE FEED';
+            startVisualizer(canvas, ctx);
+          }).catch(() => {
+            alert('Audio file not found locally. Visualizer simulating stream demo.');
+            startVisualizer(canvas, ctx);
+          });
+        } else {
+          audio.pause();
+          playBtn.textContent = 'RESUME FEED';
+          stopVisualizer();
+        }
+      });
+
+      audio.addEventListener('timeupdate', () => {
+        const cur = audio.currentTime;
+        const dur = audio.duration || 100;
+        seekSlider.value = (cur / dur) * 100;
+        currentTime.textContent = formatTime(cur);
+      });
+
+      audio.addEventListener('loadedmetadata', () => {
+        durationTime.textContent = formatTime(audio.duration);
+      });
+
+      seekSlider.addEventListener('input', () => {
+        const dur = audio.duration || 100;
+        audio.currentTime = (seekSlider.value / 100) * dur;
+      });
+
+      function formatTime(s) {
+        if (isNaN(s)) return '00:00';
+        const m = Math.floor(s / 60);
+        const sec = Math.floor(s % 60);
+        return `${m < 10 ? '0' : ''}${m}:${sec < 10 ? '0' : ''}${sec}`;
+      }
+
+      function startVisualizer(c, context) {
+        stopVisualizer();
+        visualizerInterval = setInterval(() => {
+          context.clearRect(0, 0, c.width, c.height);
+          const bars = 30;
+          const barWidth = c.width / bars;
+          for (let i = 0; i < bars; i++) {
+            const h = Math.random() * (c.height * 0.85);
+            context.fillStyle = i % 2 === 0 ? '#ff007f' : '#00f0ff';
+            context.fillRect(i * barWidth, c.height - h, barWidth - 2, h);
+          }
+        }, 80);
+      }
+
+      function stopVisualizer() {
+        if (visualizerInterval) clearInterval(visualizerInterval);
+      }
+    }
   </script>
 </body>
 </html>
